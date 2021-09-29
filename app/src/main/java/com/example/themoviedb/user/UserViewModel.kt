@@ -1,44 +1,45 @@
 package com.example.themoviedb.user
 
+import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.themoviedb.user.data.User
-import com.example.themoviedb.user.data.UserDao
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class UserViewModel(private val userDao: UserDao): ViewModel() {
-    private fun insertUser(user: User) {
-        viewModelScope.launch {
-            userDao.insert(user)
-        }
-    }
-
-    private fun getNewUserEntry(name: String, surname: String, mail: String, password: String): User {
-        return User(
-            name = name,
-            surname = surname,
-            mail = mail,
-            password = password
-        )
-    }
-
-    fun addNewUser(name: String, surname: String, mail: String, password: String) {
-        val newUser = getNewUserEntry(name, surname, mail, password)
+class UserViewModel(private val userDao: UserDao) : ViewModel() {
+    fun addNewItem( userName: String, lastName: String, mail: String ,password: String) {
+        val newUser = getNewUserEntry( userName, lastName,mail ,password)
         insertUser(newUser)
     }
 
+    private fun insertUser(user: User) {
+        viewModelScope.launch {
+            AsyncTask.execute {
+                userDao.insert(user)
+            }
 
-    fun isEntryValid(name: String, surname: String, mail: String, password: String): Boolean {
-        if (name.isBlank() || surname.isBlank() || mail.isBlank() || password.isBlank()) {
+        }
+    }
+
+    fun isEntryValid(userName: String, lastName: String, password: String, mail: String): Boolean {
+        if (userName.isBlank() || lastName.isBlank() || password.isBlank() || mail.isBlank()) {
             return false
         }
         return true
     }
 
+    private fun getNewUserEntry(userName: String, lastName: String, mail: String ,password: String): User {
+        return User(
+            firstName =  userName,
+            lastName = lastName,
+            password = password,
+            mail = mail,
+        )
+    }
 }
 class UserViewModelFactory(private val userDao: UserDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return UserViewModel(userDao) as T

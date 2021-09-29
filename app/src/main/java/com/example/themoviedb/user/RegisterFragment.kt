@@ -1,46 +1,69 @@
 package com.example.themoviedb.user
-
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
-import com.example.inventory.UserApplication
-import com.example.themoviedb.R
-import com.example.themoviedb.user.data.User
+import com.example.themoviedb.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
-    private lateinit var binding: UserViewModel
+    lateinit var user: User
     private val viewModel: UserViewModel by activityViewModels {
         UserViewModelFactory(
-            (activity?.application as UserApplication).database
-                .UserDao()
+            (activity?.application as UserApplication).database.userDao()
         )
     }
-    lateinit var user: User
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
             binding.inputRegisterName.text.toString(),
-            binding.surname.text.toString(),
-            binding.mail.text.toString()
-            binding.password.text.toString()
+            binding.inputRegisterSurname.text.toString(),
+            binding.inputRegisterEmail.text.toString(),
+            binding.inputRegisterPassword.text.toString(),
         )
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+   private fun addNewItem() {
+        if (isEntryValid()) {
+            viewModel.addNewItem(
+                binding.inputRegisterName.text.toString(),
+                binding.inputRegisterSurname.text.toString(),
+                binding.inputRegisterEmail.text.toString(),
+                binding.inputRegisterPassword.text.toString(),
+            )
+           // val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+           // findNavController().navigate(action)
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.inputRegisterButton.setOnClickListener {
+                addNewItem()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Hide keyboard.
+        val inputMethodManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as
+                InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
+        _binding = null
     }
 
 }
