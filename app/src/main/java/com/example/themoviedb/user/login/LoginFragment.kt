@@ -1,4 +1,4 @@
-package com.example.themoviedb.user
+package com.example.themoviedb.user.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

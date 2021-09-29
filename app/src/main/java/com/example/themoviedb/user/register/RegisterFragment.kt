@@ -1,14 +1,16 @@
-package com.example.themoviedb.user
+package com.example.themoviedb.user.register
 import android.content.Context.INPUT_METHOD_SERVICE
-import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.themoviedb.databinding.FragmentRegisterBinding
+import com.example.themoviedb.user.User
+import com.example.themoviedb.user.data.UserApplication
 
 class RegisterFragment : Fragment() {
     lateinit var user: User
@@ -54,6 +56,10 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.inputRegisterButton.setOnClickListener {
                 addNewItem()
+            val userName: String = binding.inputRegisterName.text.toString()
+                clean()
+            welcome(userName)
+
         }
     }
 
@@ -66,4 +72,14 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
+    private fun welcome(name: String){
+        Toast.makeText(context, "User  $name registered", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun clean(){
+        binding.inputRegisterName.setText("")
+        binding.inputRegisterSurname.setText("")
+        binding.inputRegisterEmail.setText("")
+        binding.inputRegisterPassword.setText("")
+    }
 }

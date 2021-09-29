@@ -1,4 +1,4 @@
-package com.example.themoviedb.user
+package com.example.themoviedb.user.data
 
 import android.app.Application
 import com.example.themoviedb.user.data.UserDatabase
