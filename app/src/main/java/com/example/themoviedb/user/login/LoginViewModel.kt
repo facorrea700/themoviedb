@@ -1,10 +1,11 @@
-package com.example.themoviedb.user
+package com.example.themoviedb.user.register
 
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.async
+import com.example.themoviedb.user.User
+import com.example.themoviedb.user.data.UserDao
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val userDao: UserDao) : ViewModel() {
