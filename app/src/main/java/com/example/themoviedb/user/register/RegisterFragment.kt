@@ -1,4 +1,5 @@
 package com.example.themoviedb.user.register
+
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,7 +40,8 @@ class RegisterFragment : Fragment() {
             binding.inputRegisterPassword.text.toString(),
         )
     }
-   private fun addNewItem() {
+
+    private fun addNewItem() {
         if (isEntryValid()) {
             viewModel.addNewItem(
                 binding.inputRegisterName.text.toString(),
@@ -47,17 +49,17 @@ class RegisterFragment : Fragment() {
                 binding.inputRegisterEmail.text.toString(),
                 binding.inputRegisterPassword.text.toString(),
             )
-           // val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-           // findNavController().navigate(action)
+            // val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+            // findNavController().navigate(action)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.inputRegisterButton.setOnClickListener {
-                addNewItem()
+            addNewItem()
             val userName: String = binding.inputRegisterName.text.toString()
-                clean()
+            clean()
             welcome(userName)
 
         }
@@ -72,11 +74,11 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
-    private fun welcome(name: String){
+    private fun welcome(name: String) {
         Toast.makeText(context, "User  $name registered", Toast.LENGTH_SHORT).show()
     }
 
-    private fun clean(){
+    private fun clean() {
         binding.inputRegisterName.setText("")
         binding.inputRegisterSurname.setText("")
         binding.inputRegisterEmail.setText("")

@@ -6,7 +6,7 @@
     <data>
 <variable
     name="data"
-    type="com.example.themoviedb.user.register.UserViewModel" />
+    type="com.example.themoviedb.user.register.RegisterFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
