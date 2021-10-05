@@ -9,35 +9,8 @@ import com.example.themoviedb.user.data.UserDao
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val userDao: UserDao) : ViewModel() {
-
-
-    private fun insertUser(user: User) {
-        viewModelScope.launch {
-            AsyncTask.execute {
-                userDao.insert(user)
-            }
-        }
-    }
-
-    fun isEntryValid(userName: String, lastName: String, password: String, mail: String): Boolean {
-        if (userName.isBlank() || lastName.isBlank() || password.isBlank() || mail.isBlank()) {
-            return false
-        }
-        return true
-    }
-
-    private fun getNewUserEntry(
-        userName: String,
-        lastName: String,
-        mail: String,
-        password: String
-    ): User {
-        return User(
-            firstName = userName,
-            lastName = lastName,
-            password = password,
-            mail = mail,
-        )
+    private fun recoverUser(mail: String, password: String): User {
+        return userDao.getUser(mail, password)
     }
 }
 

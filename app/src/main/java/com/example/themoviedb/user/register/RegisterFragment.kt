@@ -9,26 +9,31 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentRegisterBinding
 import com.example.themoviedb.user.User
 import com.example.themoviedb.user.data.UserApplication
 
 class RegisterFragment : Fragment() {
-    lateinit var user: User
+    private lateinit var binding: FragmentRegisterBinding
+    private lateinit var navController: NavController
+
+    private lateinit var user: User
+
     private val viewModel: UserViewModel by activityViewModels {
         UserViewModelFactory(
             (activity?.application as UserApplication).database.userDao()
         )
     }
-    private var _binding: FragmentRegisterBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,19 +54,20 @@ class RegisterFragment : Fragment() {
                 binding.inputRegisterEmail.text.toString(),
                 binding.inputRegisterPassword.text.toString(),
             )
-            // val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-            // findNavController().navigate(action)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
         binding.inputRegisterButton.setOnClickListener {
             addNewItem()
             val userName: String = binding.inputRegisterName.text.toString()
             clean()
             welcome(userName)
-
+        }
+        binding.textViewOrLogin.setOnClickListener {
+            navController.navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
 
@@ -71,7 +77,6 @@ class RegisterFragment : Fragment() {
         val inputMethodManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
-        _binding = null
     }
 
     private fun welcome(name: String) {

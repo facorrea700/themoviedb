@@ -19,4 +19,5 @@
     <string name="Settings">Settings</string>
     <string name="Movies">Movies</string>
     <string name="People">People</string>
+    <string name="orLogin">Or login</string>
 </resources>
