@@ -42,15 +42,6 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
             mail = mail,
         )
     }
-
-    fun recoverUser(mail: String, password: String): User {
-        viewModelScope.launch {
-
-              var user:User = userDao.getUser(mail, password)
-        }
-        //TODO return
-    }
-
 }
 
 class UserViewModelFactory(private val userDao: UserDao) : ViewModelProvider.Factory {

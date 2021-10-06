@@ -1,16 +1,12 @@
 package com.example.themoviedb.user.login
 
-import android.os.AsyncTask
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.themoviedb.user.User
 import com.example.themoviedb.user.data.UserDao
-import kotlinx.coroutines.launch
 
 class LoginViewModel(private val userDao: UserDao) : ViewModel() {
-    private fun recoverUser(mail: String, password: String): User {
-        return userDao.getUser(mail, password)
+    fun recoverUser(mail: String, password: String): LiveData<User> {
+        return userDao.getUser(mail, password).asLiveData()
     }
 }
 

@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentLoginBinding
 import com.example.themoviedb.user.User
 import com.example.themoviedb.user.data.UserApplication
-import com.example.themoviedb.user.register.UserViewModel
-import com.example.themoviedb.user.register.UserViewModelFactory
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -22,13 +22,13 @@ class LoginFragment : Fragment() {
 
     private lateinit var user: User
 
-    private val viewModel: UserViewModel by activityViewModels {
-        UserViewModelFactory(
+    private val viewModel: LoginViewModel by activityViewModels {
+        LoginViewModelFactory(
             (activity?.application as UserApplication).database.userDao()
         )
     }
 
-    private fun recoverUser(mail: String, password: String): User {
+    private fun recoverUser(mail: String, password: String): LiveData<User> {
         return viewModel.recoverUser(mail, password)
     }
 
@@ -47,15 +47,15 @@ class LoginFragment : Fragment() {
         binding.textViewNotRegister.setOnClickListener {
             navController.navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        binding.buttonLogin.setOnClickListener{
-            var mail:String = binding.inputMail.toString()
-            var passowrd: String = binding.inputMail.toString()
-            var userRecovered: User = recoverUser(mail,passowrd)
-            Log.d("test", userRecovered.firstName.toString())
+        binding.buttonLogin.setOnClickListener {
+            var mail: String = binding.inputMail.text.toString()
+            var passowrd: String = binding.inputPassword.text.toString()
+
+            recoverUser(mail,passowrd).observe(this.viewLifecycleOwner) {
+                Log.d("test", it.firstName.toString())
+                navController.navigate(R.id.action_loginFragment_to_home)
+            }
+            Toast.makeText(activity, "welcome "+user.firstName.toString(), Toast.LENGTH_SHORT).show() //no funciona
         }
-
-
     }
-
-
 }
