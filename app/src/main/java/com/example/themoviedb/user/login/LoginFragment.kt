@@ -55,7 +55,6 @@ class LoginFragment : Fragment() {
                 Log.d("test", it.firstName.toString())
                 navController.navigate(R.id.action_loginFragment_to_home)
             }
-            Toast.makeText(activity, "welcome "+user.firstName.toString(), Toast.LENGTH_SHORT).show() //no funciona
         }
     }
 }
