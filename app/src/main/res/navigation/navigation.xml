@@ -29,6 +29,12 @@
         <action
             android:id="@+id/action_loginFragment_to_home"
             app:destination="@id/home" />
+        <argument
+            android:name="mail"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/home"

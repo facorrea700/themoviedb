@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
@@ -53,7 +54,9 @@ class LoginFragment : Fragment() {
 
             recoverUser(mail,passowrd).observe(this.viewLifecycleOwner) {
                 Log.d("test", it.firstName.toString())
-                navController.navigate(R.id.action_loginFragment_to_home)
+                var name: String = it.firstName.toString()
+                val bundle = bundleOf("name" to name)
+                navController.navigate(R.id.action_loginFragment_to_home, bundle)
             }
         }
     }

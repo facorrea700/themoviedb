@@ -20,4 +20,6 @@
     <string name="Movies">Movies</string>
     <string name="People">People</string>
     <string name="orLogin">Or login</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top rated</string>
 </resources>
