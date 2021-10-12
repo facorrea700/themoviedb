@@ -15,7 +15,7 @@ class AdapterPeople (var list: AbstractList<People>):RecyclerView.Adapter<Adapte
         fun bindItems(data:People){
             val name:TextView=itemView.findViewById(R.id.textViewPeopleName)
             val description:TextView=itemView.findViewById(R.id.textViewDescriptionPeople)
-            val image: ImageView =itemView.findViewById(R.id.imagePeople)
+            val image: ImageView =itemView.findViewById(R.id.imageMovie)
 
             name.text=data.name
             description.text=data.Description

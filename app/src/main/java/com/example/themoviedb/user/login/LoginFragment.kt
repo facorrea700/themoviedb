@@ -56,7 +56,8 @@ class LoginFragment : Fragment() {
                 Log.d("test", it.firstName.toString())
                 var name: String = it.firstName.toString()
                 val bundle = bundleOf("name" to name)
-                navController.navigate(R.id.action_loginFragment_to_home, bundle)
+                //navController.navigate(R.id.action_loginFragment_to_home, bundle)
+                navController.navigate(R.id.action_loginFragment_to_popularMovies, bundle)
             }
         }
     }

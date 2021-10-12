@@ -10,7 +10,7 @@
     android:elevation="4dp">
 
     <ImageView
-        android:id="@+id/imagePeople"
+        android:id="@+id/imageMovie"
         android:layout_width="92dp"
         android:layout_height="96dp"
         android:layout_margin="16dp"
