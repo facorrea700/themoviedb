@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -20,8 +19,6 @@ import com.example.themoviedb.user.data.UserApplication
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var navController: NavController
-
-    private lateinit var user: User
 
     private val viewModel: LoginViewModel by activityViewModels {
         LoginViewModelFactory(
@@ -49,15 +46,15 @@ class LoginFragment : Fragment() {
             navController.navigate(R.id.action_loginFragment_to_registerFragment)
         }
         binding.buttonLogin.setOnClickListener {
-            var mail: String = binding.inputMail.text.toString()
-            var passowrd: String = binding.inputPassword.text.toString()
+            val mail: String = binding.inputMail.text.toString()
+            val password: String = binding.inputPassword.text.toString()
 
-            recoverUser(mail,passowrd).observe(this.viewLifecycleOwner) {
+            recoverUser(mail,password).observe(this.viewLifecycleOwner) {
                 Log.d("test", it.firstName.toString())
-                var name: String = it.firstName.toString()
+                val name: String = it.firstName.toString()
                 val bundle = bundleOf("name" to name)
                 //navController.navigate(R.id.action_loginFragment_to_home, bundle)
-                navController.navigate(R.id.action_loginFragment_to_popularMovies, bundle)
+                navController.navigate(R.id.action_loginFragment_to_home, bundle)
             }
         }
     }
