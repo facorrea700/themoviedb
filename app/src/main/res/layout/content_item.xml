@@ -1,35 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@color/white"
-    android:elevation="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageMovie"
-        android:layout_width="92dp"
-        android:layout_height="96dp"
-        android:layout_margin="16dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    <data>
 
-    <TextView
-        android:id="@+id/textViewPeopleName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="123dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        tools:text="Name" />
+        <variable
+            name="movie"
+            type="com.example.themoviedb.movies.network.Movie" />
+    </data>
 
-    <TextView
-        android:id="@+id/textViewDescriptionPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="123dp"
-        android:layout_marginTop="55dp"
-        tools:text="Description" />
-</androidx.cardview.widget.CardView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/imageMovie"
+                    android:layout_width="92dp"
+                    android:layout_height="96dp"
+                    app:imageUrl="@{movie.posterPath}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/textViewMovieName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{movie.title}"
+                    app:layout_constraintLeft_toRightOf="@+id/imageMovie"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Name" />
+
+                <TextView
+                    android:id="@+id/textViewMovieDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="@{movie.releaseDate}"
+                    app:layout_constraintLeft_toRightOf="@+id/imageMovie"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewMovieName"
+                    tools:text="Date" />
+
+                <TextView
+                    android:id="@+id/textViewDescriptionMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="@{movie.overview}"
+                    app:layout_constraintLeft_toRightOf="@+id/imageMovie"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewMovieDate"
+                    tools:text="@string/Description" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

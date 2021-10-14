@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/popularMoviesFragment">
 
     <fragment
         android:id="@+id/accountSettingsFragment"
@@ -35,9 +35,6 @@
         <argument
             android:name="password"
             app:argType="string" />
-        <action
-            android:id="@+id/action_loginFragment_to_popularMovies"
-            app:destination="@id/popularMovies" />
     </fragment>
     <fragment
         android:id="@+id/home"
@@ -45,8 +42,8 @@
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
     <fragment
-        android:id="@+id/popularMovies"
-        android:name="com.example.themoviedb.movies.PopularMovies"
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.example.themoviedb.movies.PopularMoviesFragment"
         android:label="fragment_popular_movies_list"
         tools:layout="@layout/fragment_popular_movies_list" />
 </navigation>
