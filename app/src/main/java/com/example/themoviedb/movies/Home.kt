@@ -2,12 +2,16 @@ package com.example.themoviedb.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.get
 import com.example.themoviedb.databinding.HomeFragmentBinding
+import com.google.android.material.tabs.TabLayout
 
 
 class Home : Fragment() {
@@ -34,6 +38,24 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var name = arguments?.getString("name")
+
+
+        var tabLayout = binding.tabLayout
+        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
     }
 
 }
