@@ -21,6 +21,8 @@ private val retrofit = Retrofit.Builder()
 interface MoviesApiService {
     @GET("movie/popular?api_key=${API_KEY}")
     suspend fun getPopular(): Movies
+    @GET("movie/top_rated?api_key=${API_KEY}")
+    suspend fun getTopRated(): Movies
 }
 
 object MoviesApi {

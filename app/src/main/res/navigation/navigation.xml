@@ -37,11 +37,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/popularMoviesFragment"
-        android:name="com.example.themoviedb.movies.PopularMoviesFragment"
-        android:label="fragment_popular_movies_list"
-        tools:layout="@layout/fragment_popular_movies_list" />
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.themoviedb.movies.HomeFragment"
         android:label="HomeFragment" />
