@@ -1,39 +1,39 @@
 package com.example.themoviedb
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-
 import androidx.navigation.ui.setupWithNavController
 
 import com.example.themoviedb.databinding.FragmentHomeBinding
-import com.example.themoviedb.databinding.FragmentLoginBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    val navView: BottomNavigationView = binding.bottomNavigationView
     private lateinit var navController: NavController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+
+        navController = findNavController()
+        navView.setupWithNavController(navController)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val bottomNavigation = binding.bottomNavigationView
-        val navController = findNavController()
-
-        bottomNavigation.setupWithNavController(navController)
     }
+
 }
 
