@@ -12,14 +12,15 @@
         <entry key="app/src/main/res/layout/fragment_account_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/fragment_people.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_people.xml" value="0.21182266009852216" />
         <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.48502994011976047" />
         <entry key="app/src/main/res/layout/fragment_popular_movies_list.xml" value="0.3546195652173913" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.33288948069241014" />
         <entry key="app/src/main/res/layout/movies_fragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/navigation.xml" value="0.3641304347826087" />
-        <entry key="app/src/main/res/layout/people_fragment.xml" value="0.3223958333333333" />
+        <entry key="app/src/main/res/layout/people_fragment.xml" value="0.3103448275862069" />
+        <entry key="app/src/main/res/layout/people_item.xml" value="0.4813374805598756" />
         <entry key="app/src/main/res/layout/top_rated_fragment.xml" value="0.253125" />
         <entry key="app/src/main/res/menu-v26/menu.xml" value="0.3078125" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.37604166666666666" />

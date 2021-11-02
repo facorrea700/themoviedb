@@ -1,6 +1,5 @@
 package com.example.themoviedb.movies.network
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -8,7 +7,6 @@ import com.squareup.moshi.JsonClass
 data class Movies(
     @Json(name = "results") val movies: List<Movie>?
 )
-
 data class Movie(
     @Json(name = "poster_path") val posterPath: String?,
     @Json(name = "adult") val adult: Boolean?,

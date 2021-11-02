@@ -12,7 +12,6 @@ class TopRatedViewModel : ViewModel() {
     private val _movies = MutableLiveData<Movies?>()
     val movies: LiveData<Movies?> = _movies
 
-
     init {
         getTopRated()
     }

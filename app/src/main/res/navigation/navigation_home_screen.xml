@@ -14,7 +14,7 @@
         android:id="@+id/peopleFragment"
         android:name="com.example.themoviedb.movies.people.PeopleFragment"
         android:label="PeopleFragment"
-        tools:layout="@layout/people_fragment" />
+        tools:layout="@layout/fragment_people" />
     <fragment
         android:id="@+id/accountSettingsFragment"
         android:name="com.example.themoviedb.user.AccountSettingsFragment"

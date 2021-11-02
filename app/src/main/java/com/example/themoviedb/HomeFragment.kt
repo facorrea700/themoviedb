@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.themoviedb.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

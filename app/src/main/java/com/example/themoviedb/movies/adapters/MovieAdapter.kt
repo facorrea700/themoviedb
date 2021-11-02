@@ -1,6 +1,5 @@
 package com.example.themoviedb.movies.adapters
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -12,7 +11,8 @@ import com.example.themoviedb.movies.network.Movie
 class MovieAdapter : ListAdapter<Movie,
         MovieAdapter.MovieViewHolder>(DiffCallback) {
 
-    class MovieViewHolder(private var binding: ContentItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieViewHolder(private var binding: ContentItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.movie = movie
             binding.executePendingBindings()
@@ -44,5 +44,4 @@ class MovieAdapter : ListAdapter<Movie,
             return oldItem.id == newItem.id
         }
     }
-
 }
