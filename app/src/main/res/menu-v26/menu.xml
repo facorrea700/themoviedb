@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/ic_Movies"
+        android:id="@+id/moviesFragment"
+        android:title="@string/Movies"
         android:icon="@drawable/ic_movies"
-        android:title="@string/Movies" />
+        />
     <item
-        android:id="@+id/ic_People"
+        android:id="@+id/peopleFragment"
+        android:title="@string/People"
         android:icon="@drawable/ic_people"
-        android:title="@string/People" />
+        />
     <item
-        android:id="@+id/ic_Settings"
+        android:id="@+id/accountSettingsFragment2"
+        android:title="@string/Settings"
         android:icon="@drawable/ic_settings"
-        android:iconTint="@color/dark_mint"
-        android:background="@color/dark_mint"
-        android:title="@string/Settings" />
+        />
 </menu>
