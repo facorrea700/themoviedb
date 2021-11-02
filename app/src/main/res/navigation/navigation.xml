@@ -6,11 +6,6 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/accountSettingsFragment"
-        android:name="com.example.themoviedb.user.AccountSettingsFragment"
-        android:label="fragment_account_settings"
-        tools:layout="@layout/fragment_account_settings" />
-    <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.themoviedb.user.register.RegisterFragment"
         android:label="RegisterFragment" >
@@ -38,6 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.themoviedb.movies.HomeFragment"
-        android:label="HomeFragment" />
+        android:name="com.example.themoviedb.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
