@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/moviesFragment"
-        android:title="@string/Movies"
+        android:enabled="true"
         android:icon="@drawable/ic_movies"
-        />
+        android:title="@string/Movies" />
     <item
         android:id="@+id/peopleFragment"
-        android:title="@string/People"
+        android:enabled="true"
         android:icon="@drawable/ic_people"
-        />
+        android:title="@string/People" />
     <item
         android:id="@+id/accountSettingsFragment"
-        android:title="@string/Settings"
+        android:enabled="true"
         android:icon="@drawable/ic_settings"
-        />
+        android:title="@string/Settings" />
 </menu>

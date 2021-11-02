@@ -39,7 +39,7 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
             firstName = userName,
             lastName = lastName,
             password = password,
-            mail = mail,
+            mail = mail
         )
     }
 }

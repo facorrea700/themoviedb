@@ -42,7 +42,7 @@ class RegisterFragment : Fragment() {
             binding.inputRegisterName.text.toString(),
             binding.inputRegisterSurname.text.toString(),
             binding.inputRegisterEmail.text.toString(),
-            binding.inputRegisterPassword.text.toString(),
+            binding.inputRegisterPassword.text.toString()
         )
     }
 
@@ -52,7 +52,7 @@ class RegisterFragment : Fragment() {
                 binding.inputRegisterName.text.toString(),
                 binding.inputRegisterSurname.text.toString(),
                 binding.inputRegisterEmail.text.toString(),
-                binding.inputRegisterPassword.text.toString(),
+                binding.inputRegisterPassword.text.toString()
             )
         }
     }
