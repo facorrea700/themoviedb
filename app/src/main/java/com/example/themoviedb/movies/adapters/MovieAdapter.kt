@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themoviedb.databinding.ContentItemBinding
 import com.example.themoviedb.movies.network.Movie
+import java.util.logging.Filter
 
 class MovieAdapter : ListAdapter<Movie,
         MovieAdapter.MovieViewHolder>(DiffCallback) {
@@ -34,6 +35,8 @@ class MovieAdapter : ListAdapter<Movie,
         val movie = getItem(position)
         holder.bind(movie)
     }
+
+
 
     companion object DiffCallback : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {

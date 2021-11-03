@@ -10,8 +10,8 @@ import com.example.themoviedb.movies.network.People
 import kotlinx.coroutines.launch
 
 class PeopleViewModel : ViewModel() {
-    private val _people = MutableLiveData<People?>()
-    val people: LiveData<People?> = _people
+    private val _people = MutableLiveData<People>()
+    val people: LiveData<People> = _people
 
     init {
         getPeople()
@@ -23,6 +23,7 @@ class PeopleViewModel : ViewModel() {
                 _people.value = MoviesApi.retrofitService.getPeople()
             } catch (e: Exception) {
                 _people.value = null
+                Log.d("getPeople()", e.toString())
             }
         }
     }

@@ -23,7 +23,6 @@ class PopularMoviesViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _movies.value = MoviesApi.retrofitService.getPopular()
-                Log.d("nasheiLog", _movies.value?.movies.toString())
             } catch (e: Exception) {
                 _movies.value = null
             }

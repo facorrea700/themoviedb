@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.viewpager2.widget.ViewPager2
 import com.example.themoviedb.R
 import com.google.android.material.tabs.TabLayout
@@ -27,10 +26,12 @@ class MoviesFragment : Fragment() {
         pager.adapter = viewPagerAdapter
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
 
-       TabLayoutMediator(
+        //(activity as? AppCompatActivity)?.supportActionBar?.show()
+
+        TabLayoutMediator(
             tabLayout,
             pager
-            ) { tab, position ->
+        ) { tab, position ->
             when (position) {
                 0 -> tab.text = "Popular"
                 1 -> tab.text = "Top Rated"

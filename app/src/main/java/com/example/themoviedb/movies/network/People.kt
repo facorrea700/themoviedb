@@ -7,6 +7,7 @@ import com.squareup.moshi.JsonClass
 data class People(
     @Json(name = "results") val people: List<Person>?
 )
+
 data class Person(
     @Json(name = "adult") val adult: Boolean?,
     @Json(name = "gender") val gender: String?,
