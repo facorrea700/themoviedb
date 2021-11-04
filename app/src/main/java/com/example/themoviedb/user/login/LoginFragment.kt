@@ -55,7 +55,6 @@ class LoginFragment : Fragment() {
             val mail: String = binding.inputMail.text.toString()
             val password: String = binding.inputPassword.text.toString()
             recoverUser(mail,password).observe(this.viewLifecycleOwner) {
-                Log.d("test", it.firstName.toString())
                 val name: String = it.firstName.toString()
                 val bundle = bundleOf("name" to name)
                 navController.navigate(R.id.action_loginFragment_to_homeFragment, bundle)
