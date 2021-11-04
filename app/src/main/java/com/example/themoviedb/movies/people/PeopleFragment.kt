@@ -24,5 +24,4 @@ class PeopleFragment : Fragment() {
         binding.peopleGrid.adapter = PersonAdapter()
         return binding.root
     }
-
 }

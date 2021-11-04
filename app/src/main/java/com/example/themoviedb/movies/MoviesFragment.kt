@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.themoviedb.R
 import com.google.android.material.tabs.TabLayout
@@ -21,13 +22,12 @@ class MoviesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Movies"
         val viewPagerAdapter = ViewPagerAdapter(this)
         val pager = view.findViewById<ViewPager2>(R.id.pager)
         pager.adapter = viewPagerAdapter
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
-
-        //(activity as? AppCompatActivity)?.supportActionBar?.show()
-
         TabLayoutMediator(
             tabLayout,
             pager
