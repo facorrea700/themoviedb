@@ -1,9 +1,11 @@
 package com.example.themoviedb
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
@@ -26,8 +28,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val bottomNavigation = view.findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navController = findNavController(requireActivity(),R.id.fragmentContainerViewHome)
-
         bottomNavigation.setupWithNavController(navController)
+
     }
 }
 

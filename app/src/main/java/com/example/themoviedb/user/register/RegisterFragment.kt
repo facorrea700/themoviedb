@@ -8,19 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentRegisterBinding
-import com.example.themoviedb.user.User
 import com.example.themoviedb.user.data.UserApplication
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var navController: NavController
-
-    private lateinit var user: User
 
     private val viewModel: UserViewModel by activityViewModels {
         UserViewModelFactory(
@@ -46,7 +44,7 @@ class RegisterFragment : Fragment() {
         )
     }
 
-    private fun addNewItem() {
+    private fun addNewItem(): Boolean {
         if (isEntryValid()) {
             viewModel.addNewItem(
                 binding.inputRegisterName.text.toString(),
@@ -54,17 +52,29 @@ class RegisterFragment : Fragment() {
                 binding.inputRegisterEmail.text.toString(),
                 binding.inputRegisterPassword.text.toString()
             )
+            return true
+        } else {
+            return false
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Register"
         navController = Navigation.findNavController(view)
         binding.inputRegisterButton.setOnClickListener {
-            addNewItem()
-            val userName: String = binding.inputRegisterName.text.toString()
-            clean()
-            welcome(userName)
+            if (addNewItem()) {
+                val userName: String = binding.inputRegisterName.text.toString()
+                clean()
+                welcome(userName)
+                navController.navigate(R.id.action_registerFragment_to_loginFragment)
+                Toast.makeText(context, "Now you can login", Toast.LENGTH_SHORT).show()
+
+            } else {
+                Toast.makeText(context, "Invalid data", Toast.LENGTH_SHORT).show()
+
+            }
+
         }
         binding.textViewOrLogin.setOnClickListener {
             navController.navigate(R.id.action_registerFragment_to_loginFragment)

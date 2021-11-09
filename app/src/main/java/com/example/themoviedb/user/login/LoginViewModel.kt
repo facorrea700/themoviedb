@@ -5,6 +5,7 @@ import com.example.themoviedb.user.User
 import com.example.themoviedb.user.data.UserDao
 
 class LoginViewModel(private val userDao: UserDao) : ViewModel() {
+
     fun recoverUser(mail: String, password: String): LiveData<User> {
         return userDao.getUser(mail, password).asLiveData()
     }
