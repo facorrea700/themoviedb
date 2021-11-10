@@ -12,10 +12,12 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentAccountSettingsBinding
-import com.example.themoviedb.databinding.FragmentLoginBinding
+import androidx.navigation.fragment.NavHostFragment.findNavController as findNavController
 
 class AccountSettingsFragment : Fragment() {
     private lateinit var binding: FragmentAccountSettingsBinding
+    private lateinit var navController: NavController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +29,7 @@ class AccountSettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Account Settings"
+        navController = Navigation.findNavController(view)
 
         val username = view.findViewById<TextView>(R.id.usernameAccount)
         username.text = User.name
@@ -36,10 +39,9 @@ class AccountSettingsFragment : Fragment() {
         binding.buttonLogout.setOnClickListener() {
             User.email = ""
             User.name = ""
-//TODO redirect to login fragment
+//TODO : Logout
+          navController.navigate(R.id.action_accountSettingsFragment2_to_loginFragment)
             Toast.makeText(context, "User logged out, login again", Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }
